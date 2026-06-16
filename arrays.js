@@ -35,7 +35,16 @@ city: "Delhi",
 isGraduated: true,
 registrationNumber: 7789,
 hobbies: ["Reading", "Traveling", "Cooking"],
-}
+},
+{
+name: "Mark",
+age: 29,
+totalMarks: 90,
+city: "Delhi",
+isGraduated: true,
+registrationNumber: 5678,
+hobbies: ["Reading", "Traveling", "Cooking"],
+},
 ];
 
 //console.log(students);
