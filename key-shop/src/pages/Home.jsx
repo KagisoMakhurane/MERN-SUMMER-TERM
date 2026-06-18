@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 
 
-function Home() {
+function Home({addtocart}) {
 const [Counter, setCounter] = useState(0);
 const [btnText,setBtnText] = useState("Hello");
 
@@ -12,7 +12,7 @@ return (
     <div className="heroText">
         <h2>Beautiful Key Chains</h2>
         <p> Explore our premium collection of stylish and customized key chains that add a personal touch to your keys. </p>
-        <button>Shop Now</button>
+        <button onClick={addtocart}>Shop Now</button>
     </div>
     <div className="heroImage">
    <img src="/images/keychain.webp" height="100%" width="100%"/>
@@ -23,43 +23,43 @@ return (
         <h2>Featured Products</h2>
         <div className="productGrid">
             <div className="card">
-                <div classname="image-box">
-                     <img src="/images/panda-key-chain.jpg"  height="90%" width="100%"/>
+                <div className="image-box">
+                     <img src="/images/panda-key-chain.jpg"/>
                 </div>
             <h3>Cartton key chain</h3>
             <p>Nice clean design</p>
             <p>Price: $17</p>
-            <button className="btn">Add to Cart</button>
+            <button className="btn" onClick={addtocart}>Add to Cart</button>
             </div>
 
              <div className="card">
-                <div classname="image-box">
-                     <img src="/images/keychain.webp"  height="70%" width="84%"/>
+                <div className="image-box">
+                     <img src="/images/keychain.webp"/>
                 </div>
             <h3>Green key chain</h3>
             <p>Nice clean design</p>
             <p>Price: $10</p>
-            <button className="btn">Add to Cart</button>
+            <button className="btn" onClick={addtocart}>Add to Cart</button>
                 </div>
              
             <div className="card">
-              <div classname="image-box">
-                     <img src="/images/leather-keychain.webp"  height="120%" width="90%"/>
+              <div className="image-box">
+                     <img src="/images/leather-keychain.webp"/>
                 </div>
             <h3>Leather key chain</h3>
             <p>Nice clean design</p>
             <p>Price: $13</p>
-            <button className="btn">Add to Cart</button>
+            <button className="btn" onClick={addtocart}>Add to Cart</button>
             </div>
 
             <div className="card">
-              <div classname="image-box">
-                     <img src="/images/car-keychain.webp" height = "120%" width = "100%" radius = "30px"/>
+              <div className="image-box">
+                     <img src="/images/car-keychain.webp"/>
                 </div>
             <h3>Car key chain</h3>
             <p>Nice clean design</p>
             <p>Price: $19</p>
-            <button className="btn">Add to Cart</button>
+            <button className="btn" onClick={addtocart}>Add to Cart</button>
             </div>
 
         </div>
@@ -73,6 +73,5 @@ return (
 
 );
 }
-
 
 export default Home;
