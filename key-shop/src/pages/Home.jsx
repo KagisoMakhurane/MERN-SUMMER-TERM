@@ -7,7 +7,7 @@ const [Counter, setCounter] = useState(0);
 const [btnText,setBtnText] = useState("Hello");
 
 return (
-<div className="page">
+<div className="app">
 <div className="hero">
     <div className="heroText">
         <h2>Beautiful Key Chains</h2>
@@ -15,7 +15,7 @@ return (
         <button>Shop Now</button>
     </div>
     <div className="heroImage">
-   <img src="/images/keychain.webp" height = "99%" width = "99%" radius = "30px"/>
+   <img src="/images/keychain.webp" height="100%" width="100%"/>
     </div>
 </div>
 {/*Products Section*/}
@@ -24,18 +24,17 @@ return (
         <div className="productGrid">
             <div className="card">
                 <div classname="image-box">
-                     image
+                     <img src="/images/panda-key-chain.jpg"  height="90%" width="100%"/>
                 </div>
-           
             <h3>Cartton key chain</h3>
             <p>Nice clean design</p>
-            <p>Price: $10</p>
+            <p>Price: $17</p>
             <button className="btn">Add to Cart</button>
             </div>
 
              <div className="card">
                 <div classname="image-box">
-                     image
+                     <img src="/images/keychain.webp"  height="70%" width="84%"/>
                 </div>
             <h3>Green key chain</h3>
             <p>Nice clean design</p>
@@ -45,13 +44,24 @@ return (
              
             <div className="card">
               <div classname="image-box">
-                     image
+                     <img src="/images/leather-keychain.webp"  height="120%" width="90%"/>
                 </div>
-            <h3>Leatrher key chain</h3>
+            <h3>Leather key chain</h3>
             <p>Nice clean design</p>
-            <p>Price: $10</p>
+            <p>Price: $13</p>
             <button className="btn">Add to Cart</button>
             </div>
+
+            <div className="card">
+              <div classname="image-box">
+                     <img src="/images/car-keychain.webp" height = "120%" width = "100%" radius = "30px"/>
+                </div>
+            <h3>Car key chain</h3>
+            <p>Nice clean design</p>
+            <p>Price: $19</p>
+            <button className="btn">Add to Cart</button>
+            </div>
+
         </div>
     </section>
     {/*About Section*/}
