@@ -5,6 +5,33 @@ import { useState } from 'react';
 function Home({addtocart}) {
 const [Counter, setCounter] = useState(0);
 const [btnText,setBtnText] = useState("Hello");
+const products = [
+    {
+        name: 'Cartoon Key Chain',
+        description: 'Colorful and cute design.',
+        price: 99,
+        image: '/images/panda-key-chain.jpg'
+    },
+    {
+        name: 'Name Key Chain',
+        description: 'Customized with your name.',
+        price: 149,
+        image: '/images/car-keychain.webp'
+    },
+    {
+        name: 'Leather Key Chain',
+        description: 'Premium and classy look.',
+        price: 199,
+        image: '/images/leather-keychain.webp'
+    },
+    {
+        name: 'Avengers Key Chain',
+        description: 'Your super hero key chain.',
+        price: 210,
+        image: '/images/panda-key-chain.jpg'
+    }
+];
+
 
 return (
 <div className="app">
@@ -20,49 +47,27 @@ return (
 </div>
 {/*Products Section*/}
     <section className="products">
+
+        
+
         <h2>Featured Products</h2>
         <div className="productGrid">
+            
+            {products.map((product,index) => (
+
             <div className="card">
-                <div className="image-box">
-                     <img src="/images/panda-key-chain.jpg"/>
-                </div>
-            <h3>Cartton key chain</h3>
-            <p>Nice clean design</p>
-            <p>Price: $17</p>
+            <div className="image-box">
+           <img src={product.image}/>
+            </div>
+            <h3>{product.name}</h3>
+            <p>{product.description}</p>
+            <p>Price: ${product.price}</p>
             <button className="btn" onClick={addtocart}>Add to Cart</button>
             </div>
 
-             <div className="card">
-                <div className="image-box">
-                     <img src="/images/keychain.webp"/>
-                </div>
-            <h3>Green key chain</h3>
-            <p>Nice clean design</p>
-            <p>Price: $10</p>
-            <button className="btn" onClick={addtocart}>Add to Cart</button>
-                </div>
-             
-            <div className="card">
-              <div className="image-box">
-                     <img src="/images/leather-keychain.webp"/>
-                </div>
-            <h3>Leather key chain</h3>
-            <p>Nice clean design</p>
-            <p>Price: $13</p>
-            <button className="btn" onClick={addtocart}>Add to Cart</button>
-            </div>
-
-            <div className="card">
-              <div className="image-box">
-                     <img src="/images/car-keychain.webp"/>
-                </div>
-            <h3>Car key chain</h3>
-            <p>Nice clean design</p>
-            <p>Price: $19</p>
-            <button className="btn" onClick={addtocart}>Add to Cart</button>
-            </div>
-
+           ))};
         </div>
+
     </section>
     {/*About Section*/}
     <section className="about">
