@@ -199,3 +199,25 @@ align-items: center;
   font-size: 17px;
   line-height: 1.6;
 }
+
+/** Cart Page **/
+
+.emptyCart{
+  min-height: 55vh;
+  text-align: center;
+  padding-top: 120px;
+
+}
+
+.emptyCart{
+  color: #000;
+}
+
+.continueshoppingbtn{
+  width:fit-content;
+  margin: 25px auto;
+  color:white;
+  padding: 12px 22px;
+  border-radius: 25px;
+  text-decoration: none;
+}
