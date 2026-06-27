@@ -19,16 +19,19 @@ function App() {
     }
     setCartItems((previousCartItems) =>
     { const productAlreadyInCart = previousCartItems.find((item) => item.id == product.id);
+
       if (productAlreadyInCart) {
-        return previousCartItems.map((item) =>
-          item.id == product.id ? { ...item, quantity: item.quantity + 1 } : item
-        );
-      } else {
-        return [...previousCartItems, { ...product, quantity: 1 }];
+        console.log("Products already incart:" ,productAlreadyInCart);
+        return previousCartItems.map((item) => {
+         return item.id == product.id ? { ...item, quantity: item.quantity + 1 } : item
+      });
       }
+      return [...previousCartItems, {...product,quantity: 1}]; 
     });
   }
   
+  
+
   const cartCount = cartitems.reduce((total, item) => total + item.quantity, 0);
 
   return (

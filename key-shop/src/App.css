@@ -248,4 +248,13 @@ align-items: center;
   border-radius: 25px;
   text-decoration: none;
 }
+.cartlayout{
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+  background-color: white;
+  padding: 18px;
+  border-radius: 14px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0);
 
+}
