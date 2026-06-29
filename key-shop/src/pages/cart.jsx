@@ -1,9 +1,10 @@
 import {Link} from "react-router-dom";
 
-function Cart({cartitems, increaseQuantity, decreaseQuantity}) {
+function Cart({cartitems, increaseQuantity, decreaseQuantity,clearCart}) {
 
     const totalAmount = cartitems.reduce((total, item) => total + item.price * item.quantity, 0);
-     
+     const totalItems = cartitems.reduce((total,item)=>total+item.quantity,0);
+
     if(cartitems.length == 0) {
         return ( <section className="cartPage emptyCart">
             <h1>Cart is Empty</h1>
@@ -19,7 +20,7 @@ return (
     <section className="cartPage">
         <div className="cartHeading">
              <h1>Your Shopping Cart</h1>
-             <button className="clearCartBtn">Clear Cart</button>
+             <button className="clearCartBtn" onClick={clearCart}>Clear Cart</button>
         </div>
     
           <div className="cartLayout">
@@ -60,9 +61,31 @@ return (
                 }
 
             </div>
+            
+            <div className="cartSummary">
+            <h2>Order Summary</h2>
+            
+            <div className="summaryRow">
+              <span>Total Items: </span>
+              <strong>{cartitems.length}</strong>
+            </div>
+            <div className="summaryRow totalRow">
+             <span>Total Amount: </span>
+             <strong>₹{totalAmount}</strong>
+            </div>
+
+            <button className="checkOutBtn">Proceed To Checkout</button>
+            <Link to="/" className="continueLink">Continue Shopping</Link>
+
+            </div> 
 
           </div>
+             
+              
 
+           
+          
+          
     </section>)
 }
 

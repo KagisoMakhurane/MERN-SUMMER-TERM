@@ -42,7 +42,11 @@ function App() {
        return item.id == productId ? {...item, quantity: item.quantity - 1 } : item;
    }).filter((item) => item.quantity>0 )
   })
-}
+  }
+
+  function clearCart(){
+    setCartItems([]);
+  }
 
   const cartCount = cartitems.reduce((total, item) => total + item.quantity, 0);
 
@@ -57,7 +61,8 @@ function App() {
             <Route path="/products" element={<Products />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="/cart" element={<Cart cartitems={cartitems} increaseQuantity={increaseQuantity} decreaseQuantity={decreaseQuantity}/>} />
+            <Route path="/cart" element={<Cart cartitems={cartitems} increaseQuantity={increaseQuantity} 
+            decreaseQuantity={decreaseQuantity} clearCart={clearCart} />} />
           </Routes>
         </main>
 
