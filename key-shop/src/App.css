@@ -204,7 +204,11 @@ align-items: center;
 .cartpage{
   max-width:  1200px;
   margin: auto;
-  padding:50px 30px ;
+  padding:50px 40px ;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 8px;
 
 }
 
@@ -213,6 +217,7 @@ align-items: center;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 38px;
+  padding: 25px;
 }
 .cartHeading h1{
   margin: 0;
@@ -248,15 +253,17 @@ align-items: center;
   border-radius: 25px;
   text-decoration: none;
 }
-.cartlayout{
+.cartLayout{
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap: 20px;
-  background-color: white;
-  padding: 18px;
+  background-color: rgb(233, 230, 230);
+  padding: 25px;
   border-radius: 14px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0);
-
+  box-shadow: 0 4px 15px rgba(31, 21, 21, 0);
+  margin: 15px 25px;
+  align-items: center;
+  justify-content: center;
 }
 .cartitems{
   display:flex;
@@ -268,10 +275,10 @@ align-items: center;
   display: flex;
   align-items:center;
   gap:20px;
-  background-color:white;
+  background-color:rgb(177, 175, 175);
   padding:18px;
   border-radius: 14px;
-  box-shadow:0 4px 15px rgba(0, 0,0,00)
+  box-shadow:0 4px 15px rgb(0, 0, 0)
 }
 .cartitem img{
   width:100px;
