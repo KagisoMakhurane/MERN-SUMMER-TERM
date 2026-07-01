@@ -11,28 +11,33 @@ const products = [
         name: 'Cartoon Key Chain',
         description: 'Colorful and cute design.',
         price: 99,
-        image: '/images/panda-key-chain.jpg'
+        image: '/images/panda-key-chain.jpg',
+        stock: 10
+
     },
     {
         id:102,
         name: 'Name Key Chain',
         description: 'Customized with your name.',
         price: 149,
-        image: '/images/car-keychain.webp'
+        image: '/images/car-keychain.webp',
+        stock: 5
     },
     {
         id:103,
         name: 'Leather Key Chain',
         description: 'Premium and classy look.',
         price: 199,
-        image: '/images/leather-keychain.webp'
+        image: '/images/leather-keychain.webp',
+        stock: 8
     },
     {
         id:104,
         name: 'Avengers Key Chain',
         description: 'Your super hero key chain.',
         price: 210,
-        image: '/images/panda-key-chain.jpg'
+        image: '/images/panda-key-chain.jpg',
+        stock: 12
     }
 ];
 

@@ -8,6 +8,8 @@ import About from './pages/About';
 import Contact from './pages/Contact';
 import Cart from './pages/Cart';
 import './App.css';
+import toast, {Toaster} from 'react-hot-toast';
+
 
 function App() {
  // const [cartCount,setCartCount] = useState(0);
@@ -26,9 +28,15 @@ function App() {
          return item.id == product.id ? { ...item, quantity: item.quantity + 1 } : item
       });
       }
+     
       return [...previousCartItems, {...product,quantity: 1}]; 
     });
+    console.log(product);
+    toast(`${product.name} worth ₹${product.price} added to cart`);
+
   }
+   
+       
   function increaseQuantity(productId){
     setCartItems((previousCartItems) => {
        return  previousCartItems.map((item)=>{
@@ -54,7 +62,12 @@ function App() {
     <BrowserRouter>
       <div className="App">
         <Header cartCount={cartCount} />
-
+         <Toaster
+         reverseOrder={true}
+         position="top-center"
+         gutter={30}
+         
+         />
         <main>
           <Routes>
             <Route path="/" element={<Home addtocart={addtocart} />} />
