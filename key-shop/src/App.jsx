@@ -23,19 +23,38 @@ function App() {
     { const productAlreadyInCart = previousCartItems.find((item) => item.id == product.id);
 
       if (productAlreadyInCart) {
-        console.log("Products already incart:" ,productAlreadyInCart);
+        //console.log("Products already incart:" ,productAlreadyInCart);
         return previousCartItems.map((item) => {
          return item.id == product.id ? { ...item, quantity: item.quantity + 1 } : item
       });
       }
-     
+         console.log(product);
       return [...previousCartItems, {...product,quantity: 1}]; 
     });
-    console.log(product);
-    toast(`${product.name} worth ₹${product.price} added to cart`);
+  
+    // Quantity of one product
+     const quantity = cartitems.find(item => item.id === product.id)?.quantity ?? 0;
 
-  }
-   
+
+
+     console.log(`Quantity of product ${product.id}:${quantity}`);
+
+     // Total Quantity of all products
+     const cartCount = cartitems.reduce((total, item) => total + item.quantity, 0);
+   // product.quantity = product.quantity ? product.quantity + 1 : 1;
+   // console.log(product);
+
+
+    if(product.stock < quantity + 1){
+      toast.error(`Sorry, ${product.name} is out of stock`,{
+        id:"cart-toast"
+      });
+    }else{
+    toast.success(`${product.name} worth ₹${product.price} added to cart`,{
+      id:"cart-toast"
+    });
+         }
+        }
        
   function increaseQuantity(productId){
     setCartItems((previousCartItems) => {
@@ -63,11 +82,35 @@ function App() {
       <div className="App">
         <Header cartCount={cartCount} />
          <Toaster
-         reverseOrder={true}
-         position="top-center"
-         gutter={30}
-         
-         />
+           position="top-center"
+           reverseOrder={false}
+           gutter={30}
+             toastOptions={{
+             // Define default options
+                className: '',
+                duration: 5000,
+                removeDelay: 1000,
+               style: {
+                   background: '#363636',
+                   color: '#fff',
+                 },
+
+                 // Default options for specific types
+                   success: {
+                     duration: 3000,
+                         iconTheme: {
+                             primary: 'green',
+                             secondary: 'black',
+                      },
+                       },
+                        error: {
+                            style: {
+                              background: 'red',
+                                   },
+                                   },
+                      }}
+                     />
+
         <main>
           <Routes>
             <Route path="/" element={<Home addtocart={addtocart} />} />
