@@ -9,6 +9,75 @@ function Cart({cartitems, increaseQuantity, decreaseQuantity,clearCart}) {
     const [showConfirmation, setShowConfirmation] = useState(false);
     const [showItemConfirmation, setShowItemConfirmation] = useState(false);
     const [selectedItem, setSelectedItem] = useState(null);
+   
+   //login states
+   const [showLogin, setShowLogin] = useState(false);
+   const [isloggedIn, setIsLoggedIn] = useState(false);
+   const [loggedInUser, setLoggedInUser] = useState(null);
+
+   const [loginData, setLoginData] = useState({
+    email: "",
+    password: ""
+   });
+
+   const [loginError, setLoginError] = useState({});
+   const [loginMessage, setLoginMessage] = useState("");
+
+   const handleLoginInput = (e) => {
+    const {name, value} = e.target;
+    setLoginData((prevData) => ({
+        ...prevData,
+        [name]: value
+    }));
+
+    setLoginError((prevError) => ({
+        ...prevError,
+        [name]: ""
+    }));
+
+    setLoginMessage("");
+
+    };
+
+    const validateLogin = () => {
+        const errors = {};
+        if (!loginData.email) {
+            errors.email = "Email is required";
+        }else if (!/\S+@\S+\.\S+/.test(loginData.email)) {
+            errors.email = "Email is invalid";
+        }else if (loginData.password.length <6) {
+            errors.password = "Password must be at least 6 characters";
+        }
+        return errors;
+    };
+
+    const handleLogin = (e) => {
+        e.preventDefault();
+        const errors = validateLogin();
+        if (Object.keys(errors).length > 0) {
+            setLoginError(errors);
+            return;
+        }
+    
+
+    setIsLoggedIn(true);
+    setLoggedInUser(loginData.email);
+    setLoginMessage("Login successful");
+
+    setShowLogin(false);
+    handleCheckout();
+    }
+
+    const handleCheckout = () => {
+        if (!isloggedIn) {
+            setShowLogin(true);
+            return;
+        }
+        alert("Proceeding to checkout...");
+    }
+
+
+
     if(cartitems.length == 0) {
         return ( <section className="cartPage emptyCart">
             <h1>Cart is Empty</h1>
@@ -93,7 +162,14 @@ return (
              <strong>₹{totalAmount}</strong>
             </div>
 
-            <button className="checkOutBtn">Proceed To Checkout</button>
+            <button 
+            className="checkOutBtn" 
+            onClick={handleCheckout}>
+
+                {isloggedIn
+                ?"Proceed To Checkout"
+                :"Login to Checkout"}       
+                </button>
             <Link to="/" className="continueLink">Continue Shopping</Link>
 
             </div> 
@@ -142,11 +218,42 @@ return (
           )
         };
 
-              
+{/*login modal*/}
+{showLogin && (
+    <div className="modalOverlay">
+        <div className="modal-content loginModal">
+         <button className="closeBtn" onClick={() => setShowLogin(false)}>X</button>
+        <h2>Login</h2>
+        <form onSubmit={handleLogin}>
+            <div className="formGroup">
+                <label>Email:</label>
+                <input 
+                type="email" 
+                name="email" 
+                value={loginData.email} 
+                onChange={handleLoginInput} 
+                />
+                {loginError.email && <span className="error">{loginError.email}</span>}
+                </div>
 
-           
-          
-          
+                <div className="formGroup">
+                <label>Password:</label>
+                <input
+                    type="password"
+                    name="password"
+                    value={loginData.password}
+                    onChange={handleLoginInput}
+                />
+                {loginError.password && <span className="error">{loginError.password}</span>}
+                </div>
+                <button type="submit">Login</button>
+                {loginMessage && <span className="success">{loginMessage}</span>}
+            </form>
+          </div>
+
+    </div>
+)}
+
     </section>)
 }
 

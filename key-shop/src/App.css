@@ -415,3 +415,18 @@ align-items: center;
   background-color: lightgrey;
   color: #000;
 }
+
+/*Login Modal Styles */
+.modalOverlay {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  padding:30px;
+  border-radius: 18px;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
