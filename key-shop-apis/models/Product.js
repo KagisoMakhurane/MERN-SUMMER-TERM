@@ -16,7 +16,7 @@
       required: true,
       min: 0
     },
-    image: {
+    image:{
       type: String,
       required: true
     },

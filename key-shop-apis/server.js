@@ -7,6 +7,7 @@ const cors = require("cors");
 const app = express(); // create nodejs / express app server
 app.use(cors());
 app.use(express.json());
+app.use(express.urlencoded({ extended: true })); // to parse incoming request bodies
 
 const dotenv = require("dotenv");
 dotenv.config();
