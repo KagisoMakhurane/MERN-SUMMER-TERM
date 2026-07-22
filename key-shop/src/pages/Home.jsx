@@ -1,45 +1,35 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 
 
 function Home({addtocart}) {
 const [Counter, setCounter] = useState(0);
 const [btnText,setBtnText] = useState("Hello");
-const products = [
-    {
-        id:101,
-        name: 'Cartoon Key Chain',
-        description: 'Colorful and cute design.',
-        price: 99,
-        image: '/images/panda-key-chain.jpg',
-        stock: 10
+const [products, setProducts] = useState([]);
+const [loading, setLoading] = useState(true);
+const [error, setError] = useState("");
 
-    },
-    {
-        id:102,
-        name: 'Name Key Chain',
-        description: 'Customized with your name.',
-        price: 149,
-        image: '/images/car-keychain.webp',
-        stock: 5
-    },
-    {
-        id:103,
-        name: 'Leather Key Chain',
-        description: 'Premium and classy look.',
-        price: 199,
-        image: '/images/leather-keychain.webp',
-        stock: 8
-    },
-    {
-        id:104,
-        name: 'Avengers Key Chain',
-        description: 'Your super hero key chain.',
-        price: 210,
-        image: '/images/panda-key-chain.jpg',
-        stock: 12
-    }
-];
+useEffect(() => {
+    const fetchProducts = async () => {
+        try{
+           const response = await fetch("http://localhost:3000/api/products");
+           if (!response.ok) {
+            throw new Error("Failed to fetch products");
+          }
+          const data = await response.json();
+          setProducts(data.products);
+        }
+        catch(error) {
+            console.error("Product API error:", error);
+            setError("Failed to load products try again later");
+        }
+        finally {
+            setLoading(false);}
+    };
+    fetchProducts();
+}, []);
+
+
 
 
 return (
@@ -56,10 +46,17 @@ return (
 </div>
 {/*Products Section*/}
     <section className="products">
-
-        
-
         <h2>Featured Products</h2>
+        {loading && (
+            <p>Loading products...</p>
+        )};
+        {error && (
+            <p className="error">{error}</p>
+        )};
+        {!loading && !error && products.length === 0 && (
+            <p>No products available.</p>
+        )};
+        
         <div className="productGrid">
             
             {products.map((product,index) => (
